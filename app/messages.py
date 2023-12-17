@@ -14,14 +14,14 @@ class Message:
 
 class GnSuccess(Message):
     def __init__(self, tag: str):
-        super().__init__("Успех!", tag, QMessageBox.Icon.Information)
+        super().__init__(all_languages["ru"]["SUCCESS"], tag, QMessageBox.Icon.Information)
 
 
 class GnWarning(Message):
     def __init__(self, tag: str):
-        super().__init__("Предупреждение!", tag, QMessageBox.Icon.Warning)
+        super().__init__(all_languages["ru"]["WARNING"], tag, QMessageBox.Icon.Warning)
 
 
 class GnCritical(Message):
     def __init__(self, tag: str):
-        super().__init__("Ошибка!", tag, QMessageBox.Icon.Critical)
+        super().__init__(all_languages["ru"]["ERROR"], tag, QMessageBox.Icon.Critical)
