@@ -97,7 +97,7 @@ class SimulatorApp(QMainWindow):
         self.Stack.setCurrentIndex(self.c_box.currentIndex())
 
     def __save_info_to_file(self):
-        if (self.ui_list[self.c_box.currentIndex()].check_fields()):
+        if self.ui_list[self.c_box.currentIndex()].check_fields():
             options = QFileDialog.Options()
             directory = Path(QFileDialog.getSaveFileName(self, "Выберите файл",
                                                          options=options)[0])

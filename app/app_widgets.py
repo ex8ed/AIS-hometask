@@ -6,7 +6,8 @@ from PySide6.QtWidgets import (QLabel,
                                QComboBox,
                                QLineEdit,
                                QWidget,
-                               QGridLayout)
+                               QGridLayout,
+                               QSizePolicy)
 
 from config.style_settings import (DEC_9_WIDGET_COMBO_BOX_WIDTH,
                                    DEC_9_WIDGET_LINE_EDIT_WIDTH)
@@ -39,8 +40,9 @@ class GnSystem(QWidget):
         self.name = name
         self.layout = QGridLayout(self)
 
-        self.layout.addWidget(QLabel(f'<h3> Specify parameters for {self.name}:</h3>', self),
-                         0, 0, 1, 2)
+        label = QLabel(f'<h3> Specify parameters for {self.name}:</h3>', self)
+        label.setSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
+        self.layout.addWidget(label, 0, 0, 1, 2)
 
 
 class Uocns(GnSystem):
