@@ -319,7 +319,7 @@ class Booksim(GnSystem):
         self.virtual_channels_number.setText(str(date["VirtualChannelsNum"]))
         self.traffic_distribution.setCurrentIndex(date["TrafficDistribution"])
         self.sample_period.setText(str(date["SamplePeriod"]))
-        self.topology_args.setText(" ".join(map(str, date["TopologyArguments"])))
+        self.topology_args.setText(" ".join(map(str, date["TopologyArgs"])))
         self.virtual_channel_buffer.setText(str(date["VirtualChannelBufSize"]))
         self.packet_size.setText(str(date["PacketSize"]))
         self.warm_up_periods.setText(str(date["WarmUpPeriods"]))
@@ -496,6 +496,20 @@ class Newxim(GnSystem):
         self.max_packet_size = QLineEdit(self)
         self.layout.addWidget(self.max_packet_size, row, 3)
 
+    def set_data(self, date):
+        date = date[f"{self.name}NocParameters"]
+        self.topology.setCurrentIndex(date['Topology'])
+        self.topology_channels.setText(str(date['TopologyChannels']))
+        self.selection_strategy.setCurrentIndex(date['SelectionStrategy'])
+        self.simulation_time.setText(str(date['SimulationTime']))
+        self.topology_args.setText(" ".join(map(str, date["TopologyArgs"])))
+        self.virtual_channels.setText(str(date["VirtualChannels"]))
+        self.min_packet_size.setText(str(date["MinPacketSize"]))
+        self.warm_up_time.setText(str(date["WarmUpTime"]))
+        self.routing_algorithm.setCurrentIndex(date['RoutingAlgorithm'])
+        self.buffer_depth.setText(str(date["BufferDepth"]))
+        self.max_packet_size.setText(str(date["MaxPacketSize"]))
+
     def check_fields(self) -> bool:
         topology = self.topology.currentIndex()
         topology_channels = self.topology_channels.text()
@@ -664,6 +678,18 @@ class Topaz(GnSystem):
         self.layout.addWidget(QLabel('Model name', self), row, 2)
         self.model_name = QLineEdit(self)
         self.layout.addWidget(self.model_name, row, 3)
+
+    def set_data(self, date):
+        date = date[f"{self.name}NocParameters"]
+        self.router.setCurrentIndex(date['Router'])
+        self.traffic_pattern.setCurrentIndex(date['TrafficPatternId'])
+        self.message_length.setText(str(date['MessageLength']))
+        self.flit_size.setText(str(date['FlitSize']))
+        self.network_arguments.setText(" ".join(map(str, date["TopologyArgs"])))
+        self.traffic_pattern_type.setCurrentIndex(date['TopazTrafficPatternTypes'])
+        self.packet_length.setText(str(date['PacketLength']))
+        self.simulation_cycles.setText(str(date['SimulationCycles']))
+        self.model_name.setText(str(date['Simulation']))
 
     def check_fields(self) -> bool:
         router = self.router.currentIndex()
@@ -881,6 +907,19 @@ class GpNocSim(GnSystem):
         self.traffic_type.addItems(['Uniform', 'Local'])
         self.traffic_type.setCurrentIndex(0)
         self.layout.addWidget(self.traffic_type, row, 3)
+
+    def set_data(self, date):
+        date = date[f"{self.name}NocParameters"]
+        self.topology.setCurrentIndex(date['CurrentNet'])
+        self.avg_message_length.setText(str(date['AvgMessageLength']))
+        self.flit_length.setText(str(date['FlitLength']))
+        self.number_of_nodes.setText(str(date['NumOfIpNode']))
+        self.virtual_channels_num.setText(str(date['CurrentVcCount']))
+        self.number_of_flits.setText(str(date['NumFlitPerBuffer']))
+        self.number_of_cycles.setText(str(date['NumCycle']))
+        self.number_of_runs.setText(str(date['NumRun']))
+        self.warm_up_cycles.setText(str(date['WarmUpCycle']))
+        self.traffic_type.setCurrentIndex(date['TrafficType'])
 
     def check_fields(self) -> bool:
         topology = self.topology.currentIndex()
