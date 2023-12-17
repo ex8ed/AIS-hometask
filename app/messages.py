@@ -27,7 +27,10 @@ class GnCritical(Message):
         super().__init__(lang, all_languages[lang]["ERROR"], tag, QMessageBox.Icon.Critical)
 
 
+def get_gn_text(lang: str, tag: str):
+    return all_languages[lang][tag]
+
+
 # lang-box-keys:
 
-langs = {0: 'ru',
-         1: 'en'}
+langs = sorted(all_languages.keys())

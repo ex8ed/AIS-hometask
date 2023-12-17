@@ -3,14 +3,40 @@
 
 Q_MAIN_WINDOW_STYLE = """
             QMainWindow {
-                background-color: black;
+                background-color: #B8C4BB;
             }
             QLabel {
-                color: white;
+                color: #3C362A;
             }
             QLineEdit {
-                background-color: white;
-                color: #000000;
+                background-color: #E8F7EE;
+                color: #E8F7EE;
+            }
+            QComboBox {
+                background-color: #E8F7EE;
+            }
+            QPushButton{
+                background-color: #ECEBE9;
+            }
+        """
+
+Q_MAIN_WINDOW_STYLE_CH = """
+            QMainWindow {
+                border-image:url(config/internationalization/ch.jpg)
+            }
+            QLabel {
+                color: #E8F1F2;
+                background-color: #B3001A23;
+            }
+            QLineEdit {
+                background-color: #B3E8F7EE;
+                color: #3C362A;
+            }
+            QComboBox {
+                background-color: #B3E8F7EE;
+            }
+            QPushButton{
+                background-color: #B3ECEBE9;
             }
         """
 

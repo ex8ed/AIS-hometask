@@ -68,5 +68,13 @@
     "FILE_CREATE": "The file was successfully written!",
     "SUCCESS": "Success!",
     "WARNING": "Warning!",
-    "ERROR": "Error!"
+    "ERROR": "Error!",
+    "FILE_LOAD": "File loaded",
+    "FILE_SUFFIX": "Select the file with the json extension",
+    "CHOOSE_FILE": "Select a file",
+    "SELECT_SIM": "Select a device",
+    "CREATE_FILE": "Create a file",
+    "UPLOAD_FILE": "Upload a file",
+    "SPEC_PARAM": "Specify parameters for",
+    "SELECT_LANGUAGE": "Select language"
 }

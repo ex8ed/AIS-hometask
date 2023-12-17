@@ -28,24 +28,18 @@ def isfloat(float_num_str):
         return True
 
 
-def show_msg_success_box(title='MessageBox', text='Info'):
-    msg_box = QMessageBox()
-    msg_box.setIcon(QMessageBox.Icon.Information)
-    msg_box.setWindowTitle(title)
-    msg_box.setText(text)
-    msg_box.show()
-    r = msg_box.exec()
-
-
 class GnSystem(QWidget):
     def __init__(self, name: str):
         super().__init__()
         self.name = name
         self.layout = QGridLayout(self)
 
-        label = QLabel(f'<h3> Specify parameters for {self.name}:</h3>', self)
-        label.setSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
-        self.layout.addWidget(label, 0, 0, 1, 2)
+        self.label = QLabel(f'<h3> {get_gn_text(LANGUAGE, "SPEC_PARAM")} {self.name}:</h3>', self)
+        self.label.setSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
+        self.layout.addWidget(self.label, 0, 0, 1, 2)
+
+    def update_label(self):
+        self.label.setText(f'<h3> {get_gn_text(LANGUAGE, "SPEC_PARAM")} {self.name}:</h3>')
 
 
 class Uocns(GnSystem):
@@ -189,6 +183,22 @@ class Uocns(GnSystem):
             return False
         return True
 
+    def set_data(self, date):
+        date = date[f"{self.name}NocParameters"]
+        self.topology.setCurrentIndex(date["Topology"])
+        self.fifo_size.setText(str(date["FifoSize"]))
+        self.fifo_count.setText(str(date["FifoCount"]))
+        self.flit_size.setText(str(date["FlitSize"]))
+        self.topology_args.setText(" ".join(map(str, date["TopologyArguments"])))
+        self.algorithm_args.setText(" ".join(date["AlgorithmArguments"]))
+        self.algorithm.setCurrentIndex(date["Algorithm"])
+        self.count_run.setText(str(date["CountRun"]))
+        self.count_packet_rx.setText(str(date["CountPacketRx"]))
+        self.packet_size_avg.setText(str(date["PacketSizeAvg"]))
+        self.packet_size_is_fixed.setCurrentIndex(0 if date["PacketSizeIsFixed"] else 1)
+        self.is_mode_gals.setCurrentIndex(0 if date["IsModeGALS"] else 1)
+        self.count_packet_rx_warm_up.setText(str(date["CountPacketRxWarmUp"]))
+
     def read_fields(self):
         s = Simulator(self.name, 0)
 
@@ -304,17 +314,26 @@ class Booksim(GnSystem):
         self.max_samples = QLineEdit(self)
         self.layout.addWidget(self.max_samples, row, 3)
 
+    def set_data(self, date):
+        date = date[f"{self.name}NocParameters"]
+        self.virtual_channels_number.setText(str(date["VirtualChannelsNum"]))
+        self.traffic_distribution.setCurrentIndex(date["TrafficDistribution"])
+        self.sample_period.setText(str(date["SamplePeriod"]))
+        self.topology_args.setText(" ".join(map(str, date["TopologyArguments"])))
+        self.virtual_channel_buffer.setText(str(date["VirtualChannelBufSize"]))
+        self.packet_size.setText(str(date["PacketSize"]))
+        self.warm_up_periods.setText(str(date["WarmUpPeriods"]))
+        self.routing_function.setCurrentIndex(date["RoutingFunction"])
+        self.simulation_type.setCurrentIndex(date["SimType"])
+        self.max_samples.setText(str(date["MaxSamples"]))
+
     def check_fields(self) -> bool:
-        topology = self.topology.currentIndex()
         virtual_channels_number = self.virtual_channels_number.text()
-        traffic_distribution = self.traffic_distribution.currentIndex()
         sample_period = self.sample_period.text()
         topology_args = self.topology_args.text().split()
         virtual_channels_buffer = self.virtual_channel_buffer.text()
         packet_size = self.packet_size.text()
         warm_up_periods = self.warm_up_periods.text()
-        routing_function = self.routing_function.currentIndex()
-        simulation_type = self.simulation_type.currentIndex()
         max_samples = self.max_samples.text()
 
         if not virtual_channels_number.isdigit():
@@ -751,8 +770,14 @@ class Dec9(GnSystem):
         self.message_length.setFixedWidth(DEC_9_WIDGET_LINE_EDIT_WIDTH)
         self.layout.addWidget(self.message_length)
 
+    def set_data(self, date):
+        date = date[f"{self.name}NocParameters"]
+        self.topology.setCurrentIndex(date["Topology"])
+        self.cycle_count.setText(str(date["CycleCount"]))
+        self.topology_args.setText(" ".join(map(str, date["TopologyArgs"])))
+        self.message_length.setText(str(date["MessageLength"]))
+
     def check_fields(self) -> bool:
-        topology = self.topology.currentIndex()
         topology_args = self.topology_args.text().split()
         cycle_count = self.cycle_count.text()
         message_length = self.message_length.text()

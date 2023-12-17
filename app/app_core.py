@@ -1,6 +1,8 @@
 # -*- coding: UTF-8 -*-
 """Contains core functions to make simulators structure and to write it to a file"""
+import json
 from json import dumps
+from pathlib import Path
 
 
 class Simulator:
@@ -113,3 +115,7 @@ class Extractor:
         """
         with open(f"{self.__directory}{self.__name}.json", 'a+') as file:
             file.writelines(obj)
+
+    def reader(self):
+        config = json.loads(Path(self.__directory).read_text(encoding="UTF-8"))
+        return config
