@@ -5,7 +5,6 @@
 import sys
 from pathlib import Path
 
-from PySide6 import QtGui
 from PySide6.QtCore import QUrl
 from PySide6.QtMultimedia import QMediaPlayer, QAudioOutput
 from PySide6.QtWidgets import (QApplication,
@@ -28,7 +27,7 @@ from app.app_widgets import (Uocns,
                              Dec9,
                              GpNocSim)
 
-from app.messages import (GnSuccess, GnWarning, GnCritical, langs)
+from app.messages import (GnSuccess, GnWarning, langs)
 
 from config.style_settings import (Q_MAIN_WINDOW_STYLE,
                                    Q_SIM_COMBO_BOX_WIDTH,
@@ -49,7 +48,7 @@ class SimulatorApp(QMainWindow):
         self.player = QMediaPlayer()
         self.audio = QAudioOutput()
         self.player.setAudioOutput(self.audio)
-        self.player.setSource(QUrl.fromLocalFile("config/internationalization/ch.mp3"))
+        self.player.setSource(QUrl.fromLocalFile(Path("./config/internationalization/ch.mp3").absolute()))
 
         # main widgets and layout:
         main_widget = QWidget(self)

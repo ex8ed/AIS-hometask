@@ -22,7 +22,7 @@ Q_MAIN_WINDOW_STYLE = """
 
 Q_MAIN_WINDOW_STYLE_CH = """
             QMainWindow {
-                border-image:url(config/internationalization/ch.jpg)
+                border-image:url(./config/internationalization/ch.jpg)
             }
             QLabel {
                 color: #E8F1F2;
