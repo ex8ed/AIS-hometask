@@ -48,11 +48,10 @@ class SimulatorApp(QMainWindow):
         main_widget = QWidget(self)
         self.setCentralWidget(main_widget)
         main_layout = QVBoxLayout(main_widget)
-        main_layout.addStretch()
 
         # combobox with sim types; main chooser:
-        # self.c_box = QComboBox(self)
-        # self.c_box.addItems(list(all_languages.keys()))
+        # self.lang_box = QComboBox(self)
+        # self.lang_box.addItems(list(all_languages.keys()))
 
         # combobox with sim types; main chooser:
         self.c_box = QComboBox(self)
