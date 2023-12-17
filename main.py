@@ -17,6 +17,8 @@ from PySide6.QtWidgets import (QApplication,
                                QPushButton,
                                QFileDialog)
 
+import app
+
 from app.app_widgets import (Uocns,
                              Booksim,
                              Newxim,
@@ -24,7 +26,7 @@ from app.app_widgets import (Uocns,
                              Dec9,
                              GpNocSim)
 
-from app.messages import (GnSuccess, GnWarning, GnCritical)
+from app.messages import (GnSuccess, GnWarning, GnCritical, langs)
 
 from config.style_settings import (Q_MAIN_WINDOW_STYLE,
                                    Q_SIM_COMBO_BOX_WIDTH,
@@ -52,6 +54,7 @@ class SimulatorApp(QMainWindow):
         # combobox with sim types; main chooser:
         self.lang_box = QComboBox(self)
         self.lang_box.addItems(list(all_languages.keys()))
+        self.lang_box.setFixedWidth(Q_SIM_COMBO_BOX_WIDTH)
 
         # combobox with sim types; main chooser:
         self.c_box = QComboBox(self)
@@ -93,11 +96,17 @@ class SimulatorApp(QMainWindow):
         main_layout.addWidget(self.Stack)
         self.c_box.setCurrentIndex(0)
         self.c_box.currentIndexChanged.connect(self.__index_changed)
+        self.lang_box.setCurrentIndex(0)
+        app.app_widgets.LANGUAGE = langs[self.lang_box.currentIndex()]
+        self.lang_box.currentIndexChanged.connect(self.__language_changed)
         self.creation_btn.clicked.connect(self.__save_info_to_file)
         self.setLayout(main_layout)
 
     def __index_changed(self):
         self.Stack.setCurrentIndex(self.c_box.currentIndex())
+
+    def __language_changed(self):
+        app.app_widgets.LANGUAGE = langs[self.lang_box.currentIndex()]
 
     def __save_info_to_file(self):
         if self.ui_list[self.c_box.currentIndex()].check_fields():
@@ -110,7 +119,7 @@ class SimulatorApp(QMainWindow):
             sim = self.ui_list[self.c_box.currentIndex()].read_fields()
             json_model = e.to_json(sim.export())
             e.writer(json_model)
-            GnSuccess("FILE_CREATE")
+            GnSuccess(app.app_widgets.LANGUAGE, "FILE_CREATE")
 
 
 def main():

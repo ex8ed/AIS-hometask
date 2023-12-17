@@ -16,6 +16,9 @@ from app.app_core import Simulator
 from app.messages import *
 
 
+LANGUAGE = 'ru'
+
+
 def isfloat(float_num_str):
     try:
         float(float_num_str)
@@ -132,57 +135,57 @@ class Uocns(GnSystem):
         count_packet_rx_warm_up = self.count_packet_rx_warm_up.text()
 
         if not fifo_size.isdigit():
-            GnCritical("FIFO_DIGIT")
+            GnCritical(LANGUAGE, "FIFO_DIGIT")
             return False
         elif int(fifo_size) < 1 or int(fifo_size) > 128:
-            GnCritical("FIFO_SIZE")
+            GnCritical(LANGUAGE, "FIFO_SIZE")
             return False
 
         if not fifo_count.isdigit():
-            GnCritical("FIFO_COUNT_DIGIT")
+            GnCritical(LANGUAGE, "FIFO_COUNT_DIGIT")
             return False
         elif int(fifo_count) < 1 or int(fifo_count) > 10:
-            GnCritical("FIFO_COUNT_SIZE")
+            GnCritical(LANGUAGE, "FIFO_COUNT_SIZE")
             return False
 
         if not flit_size.isdigit():
-            GnCritical("FLIT_SIZE_DIGIT")
+            GnCritical(LANGUAGE, "FLIT_SIZE_DIGIT")
             return False
         elif int(flit_size) < 1 or int(flit_size) > 128:
-            GnCritical("FLIT_SIZE_SIZE")
+            GnCritical(LANGUAGE, "FLIT_SIZE_SIZE")
             return False
 
         for arg in topology_args:
             if not arg.isdigit():
-                GnCritical("TOPOLOGY")
+                GnCritical(LANGUAGE, "TOPOLOGY")
                 return False
 
         if not count_run.isdigit():
-            GnCritical("COUNT_RUN_DIGIT")
+            GnCritical(LANGUAGE, "COUNT_RUN_DIGIT")
             return False
         elif int(count_run) != 1:
-            GnCritical("COUNT_RUN")
+            GnCritical(LANGUAGE, "COUNT_RUN")
             return False
 
         if not count_packet_rx.isdigit():
-            GnCritical("COUNT_PRX_DIGIT")
+            GnCritical(LANGUAGE, "COUNT_PRX_DIGIT")
             return False
         elif int(count_packet_rx) < 100 or int(count_packet_rx) > 10000:
-            GnCritical("COUNT_PRX_SIZE")
+            GnCritical(LANGUAGE, "COUNT_PRX_SIZE")
             return False
 
         if not packet_size_avg.isdigit():
-            GnCritical("PACKET_SIZE_DIGIT")
+            GnCritical(LANGUAGE, "PACKET_SIZE_DIGIT")
             return False
         elif int(packet_size_avg) < 1 or int(packet_size_avg) > 100:
-            GnCritical("PACKET_SIZE")
+            GnCritical(LANGUAGE, "PACKET_SIZE")
             return False
 
         if not count_packet_rx_warm_up.isdigit():
-            GnCritical("COUNT_PACKET_RX_DIGIT")
+            GnCritical(LANGUAGE, "COUNT_PACKET_RX_DIGIT")
             return False
         elif int(count_packet_rx_warm_up) < 0 or int(count_packet_rx_warm_up) > 1000:
-            GnCritical("COUNT_PACKET_RX_SIZE")
+            GnCritical(LANGUAGE, "COUNT_PACKET_RX_SIZE")
             return False
         return True
 
@@ -315,50 +318,50 @@ class Booksim(GnSystem):
         max_samples = self.max_samples.text()
 
         if not virtual_channels_number.isdigit():
-            GnCritical("VCN_DIGIT")
+            GnCritical(LANGUAGE, "VCN_DIGIT")
             return False
         elif int(virtual_channels_number) < 1 or int(virtual_channels_number) > 10:
-            GnCritical("VCN_SIZE")
+            GnCritical(LANGUAGE, "VCN_SIZE")
             return False
 
         if not sample_period.isdigit():
-            GnCritical("SPC_DIGIT")
+            GnCritical(LANGUAGE, "SPC_DIGIT")
             return False
         elif int(sample_period) < 5000 or int(sample_period) > 100000:
-            GnCritical("SPC_SIZE")
+            GnCritical(LANGUAGE, "SPC_SIZE")
             return False
 
         for arg in topology_args:
             if not arg.isdigit():
-                GnCritical("TOPOLOGY")
+                GnCritical(LANGUAGE, "TOPOLOGY")
                 return False
 
         if not virtual_channels_buffer.isdigit():
-            GnCritical("VCNBF_DIGIT")
+            GnCritical(LANGUAGE, "VCNBF_DIGIT")
             return False
         elif int(virtual_channels_buffer) < 1 or int(virtual_channels_buffer) > 128:
-            GnCritical("VCNBF_SIZE")
+            GnCritical(LANGUAGE, "VCNBF_SIZE")
             return False
 
         if not packet_size.isdigit():
-            GnCritical("PACKETF_DIGIT")
+            GnCritical(LANGUAGE, "PACKETF_DIGIT")
             return False
         elif int(packet_size) < 1 or int(packet_size) > 100:
-            GnCritical("PACKETF_SIZE")
+            GnCritical(LANGUAGE, "PACKETF_SIZE")
             return False
 
         if not warm_up_periods.isdigit():
-            GnCritical("WARMUP_DIGIT")
+            GnCritical(LANGUAGE, "WARMUP_DIGIT")
             return False
         elif int(warm_up_periods) < 0 or int(warm_up_periods) > 10:
-            GnCritical("WARMUP_SIZE")
+            GnCritical(LANGUAGE, "WARMUP_SIZE")
             return False
 
         if not max_samples.isdigit():
-            GnCritical("MAX_SAMPLES_DIGIT")
+            GnCritical(LANGUAGE, "MAX_SAMPLES_DIGIT")
             return False
         elif int(max_samples) < 1 or int(max_samples) > 10:
-            GnCritical("MAX_SAMPLES_SIZE")
+            GnCritical(LANGUAGE, "MAX_SAMPLES_SIZE")
             return False
         return True
 
@@ -488,57 +491,57 @@ class Newxim(GnSystem):
         max_packet_size = self.max_packet_size.text()
 
         if not topology_channels.isdigit():
-            GnCritical("TOPOLOGY_CHANELS")
+            GnCritical(LANGUAGE, "TOPOLOGY_CHANELS")
             return False
         elif int(topology_channels) != 1:
-            GnCritical("TOPOLOGY_CHANELS_1")
+            GnCritical(LANGUAGE, "TOPOLOGY_CHANELS_1")
             return False
 
         if not simulation_time.isdigit():
-            GnCritical("SIMULATION_TYPE_DIGIT")
+            GnCritical(LANGUAGE, "SIMULATION_TYPE_DIGIT")
             return False
         elif int(simulation_time) < 5000 or int(simulation_time) > 100000:
-            GnCritical("SIMULATION_TYPE_SIZE")
+            GnCritical(LANGUAGE, "SIMULATION_TYPE_SIZE")
             return False
 
         for arg in topology_args:
             if not arg.isdigit():
-                GnCritical("TOPOLOGY")
+                GnCritical(LANGUAGE, "TOPOLOGY")
                 return False
 
         if not virtual_channels.isdigit():
-            GnCritical("VCN_DIGIT")
+            GnCritical(LANGUAGE, "VCN_DIGIT")
             return False
         elif int(virtual_channels) < 1 or int(virtual_channels) > 10:
-            GnCritical("VCN_SIZE")
+            GnCritical(LANGUAGE, "VCN_SIZE")
             return False
 
         if not min_packet_size.isdigit():
-            GnCritical("MIN_PACKET_DIGIT")
+            GnCritical(LANGUAGE, "MIN_PACKET_DIGIT")
             return False
         elif int(min_packet_size) < 1 or int(min_packet_size) > 100:
-            GnCritical("MIN_PACKET_SIZE")
+            GnCritical(LANGUAGE, "MIN_PACKET_SIZE")
             return False
 
         if not warm_up_time.isdigit():
-            GnCritical("WARMUP_CYCLES_DIGIT")
+            GnCritical(LANGUAGE, "WARMUP_CYCLES_DIGIT")
             return False
         elif int(warm_up_time) < 0 or int(warm_up_time) > 10:
-            GnCritical("WARMUP_CYCLES_SIZE")
+            GnCritical(LANGUAGE, "WARMUP_CYCLES_SIZE")
             return False
 
         if not buffer_depth.isdigit():
-            GnCritical("BUFFER_DEPTH_DIGIT")
+            GnCritical(LANGUAGE, "BUFFER_DEPTH_DIGIT")
             return False
         elif int(buffer_depth) < 1 or int(buffer_depth) > 128:
-            GnCritical("BUFFER_DEPTH_SIZE")
+            GnCritical(LANGUAGE, "BUFFER_DEPTH_SIZE")
             return False
 
         if not max_packet_size.isdigit():
-            GnCritical("MAX_PACKET_DIGIT")
+            GnCritical(LANGUAGE, "MAX_PACKET_DIGIT")
             return False
         elif int(max_packet_size) < 1 or int(max_packet_size) > 100:
-            GnCritical("MAX_PACKET_SIZE")
+            GnCritical(LANGUAGE, "MAX_PACKET_SIZE")
             return False
         return True
 
@@ -655,36 +658,36 @@ class Topaz(GnSystem):
         model_name = self.model_name.text()  # must be a str
 
         if not message_length.isdigit():
-            GnCritical("MESSAGE_LENGTH_DIGIT")
+            GnCritical(LANGUAGE, "MESSAGE_LENGTH_DIGIT")
             return False
         elif int(message_length) != 1:
-            GnCritical("MESSAGE_LENGTH_SIZE")
+            GnCritical(LANGUAGE, "MESSAGE_LENGTH_SIZE")
             return False
 
         if not flit_size.isdigit():
-            GnCritical("FLIT_SIZE_BITS_DIGIT")
+            GnCritical(LANGUAGE, "FLIT_SIZE_BITS_DIGIT")
             return False
         elif int(flit_size) < 1 or int(flit_size) > 256:
-            GnCritical("FLIT_SIZE_BITS_SIZE")
+            GnCritical(LANGUAGE, "FLIT_SIZE_BITS_SIZE")
             return False
 
         for arg in network_arguments:
             if not arg.isdigit():
-                GnCritical("NETWORK_ARG_DIGIT")
+                GnCritical(LANGUAGE, "NETWORK_ARG_DIGIT")
                 return False
 
         if not packet_length.isdigit():
-            GnCritical("PACKET_FLITS_DIGIT")
+            GnCritical(LANGUAGE, "PACKET_FLITS_DIGIT")
             return False
         elif int(packet_length) < 1 or int(packet_length) > 100:
-            GnCritical("PACKET_FLITS_SIZE")
+            GnCritical(LANGUAGE, "PACKET_FLITS_SIZE")
             return False
 
         if not simulation_cycles.isdigit():
-            GnCritical("SIMULATION_CYCLES_DIGIT")
+            GnCritical(LANGUAGE, "SIMULATION_CYCLES_DIGIT")
             return False
         elif int(simulation_cycles) < 5000 or int(simulation_cycles) > 100000:
-            GnCritical("SIMULATION_CYCLES_SIZE")
+            GnCritical(LANGUAGE, "SIMULATION_CYCLES_SIZE")
             return False
         return True
 
@@ -756,21 +759,21 @@ class Dec9(GnSystem):
 
         for arg in topology_args:
             if not arg.isdigit():
-                GnCritical("TOPOLOGY")
+                GnCritical(LANGUAGE, "TOPOLOGY")
                 return False
 
         if not cycle_count.isdigit():
-            GnCritical("CYCLE_COUNT_DIGIT")
+            GnCritical(LANGUAGE, "CYCLE_COUNT_DIGIT")
             return False
         elif int(cycle_count) < 500 or int(cycle_count) > 100000:
-            GnCritical("CYCLE_COUNT_SIZE")
+            GnCritical(LANGUAGE, "CYCLE_COUNT_SIZE")
             return False
 
         if not message_length.isdigit():
-            GnCritical("MESSAGE_LENGTH_B_DIGIT")
+            GnCritical(LANGUAGE, "MESSAGE_LENGTH_B_DIGIT")
             return False
         elif int(message_length) < 1 or int(message_length) > 100:
-            GnCritical("MESSAGE_LENGTH_B_SIZE")
+            GnCritical(LANGUAGE, "MESSAGE_LENGTH_B_SIZE")
             return False
         return True
 
@@ -867,56 +870,56 @@ class GpNocSim(GnSystem):
         traffic_type = self.traffic_type.currentIndex()
 
         if not avg_message_len.isdigit():
-            GnCritical("AVG_MESSAGE_DIGIT")
+            GnCritical(LANGUAGE, "AVG_MESSAGE_DIGIT")
             return False
         elif int(avg_message_len) < -2147483648 or int(avg_message_len) > 2147483647:
-            GnCritical("AVG_MESSAGE_SIZE")
+            GnCritical(LANGUAGE, "AVG_MESSAGE_SIZE")
             return False
 
         if not flit_length.isdigit():
-            GnCritical("FLIT_LENGTH_DIGIT")
+            GnCritical(LANGUAGE, "FLIT_LENGTH_DIGIT")
             return False
         elif int(flit_length) < -2147483648 or int(flit_length) > 2147483647:
-            GnCritical("FLIT_LENGTH_SIZE")
+            GnCritical(LANGUAGE, "FLIT_LENGTH_SIZE")
             return False
 
         if not number_of_nodes.isdigit():
-            GnCritical("NUMBER_NODES_DIGIT")
+            GnCritical(LANGUAGE, "NUMBER_NODES_DIGIT")
             return False
         elif int(number_of_nodes) < -2147483648 or int(number_of_nodes) > 2147483647:
-            GnCritical("NUMBER_NODES_SIZE")
+            GnCritical(LANGUAGE, "NUMBER_NODES_SIZE")
             return False
 
         if not virtual_channels_count.isdigit():
-            GnCritical("VCNC_DIGIT")
+            GnCritical(LANGUAGE, "VCNC_DIGIT")
             return False
         elif int(virtual_channels_count) < -2147483648 or int(virtual_channels_count) > 2147483647:
-            GnCritical("VCNC_SIZE")
+            GnCritical(LANGUAGE, "VCNC_SIZE")
             return False
 
         if not number_of_flits.isdigit():
-            GnCritical("NUMBER_FLITS_DIGIT")
+            GnCritical(LANGUAGE, "NUMBER_FLITS_DIGIT")
             return False
         elif int(number_of_flits) < -2147483648 or int(number_of_flits) > 2147483647:
-            GnCritical("NUMBER_FLITS_SIZE")
+            GnCritical(LANGUAGE, "NUMBER_FLITS_SIZE")
             return False
 
         if not number_of_cycles.isdigit():
-            GnCritical("NUMBER_CYCLES_DIGIT")
+            GnCritical(LANGUAGE, "NUMBER_CYCLES_DIGIT")
             return False
         elif int(number_of_cycles) < -2147483648 or int(number_of_cycles) > 2147483647:
-            GnCritical("NUMBER_CYCLES_SIZE")
+            GnCritical(LANGUAGE, "NUMBER_CYCLES_SIZE")
             return False
 
         if not number_of_runs.isdigit():
-            GnCritical("NUMBER_RUNS_DIGIT")
+            GnCritical(LANGUAGE, "NUMBER_RUNS_DIGIT")
             return False
         elif int(number_of_runs) < -2147483648 or int(number_of_runs) > 2147483647:
-            GnCritical("NUMBER_RUNS_SIZE")
+            GnCritical(LANGUAGE, "NUMBER_RUNS_SIZE")
             return False
 
         if not isfloat(warm_up_cycle):
-            GnCritical("WARMUP_CYCLES_DIGIT")
+            GnCritical(LANGUAGE, "WARMUP_CYCLES_DIGIT")
             return False
         return True
 
