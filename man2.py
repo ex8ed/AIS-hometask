@@ -107,7 +107,7 @@ class SimulatorApp(QMainWindow):
             sim = self.ui_list[self.c_box.currentIndex()].read_fields()
             json_model = e.to_json(sim.export())
             e.writer(json_model)
-            GnSuccess('Успех!', 'Файл успешно записан!')
+            GnSuccess("FILE_CREATE")
 
 
 def main():
