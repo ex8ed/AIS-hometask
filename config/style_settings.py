@@ -10,7 +10,7 @@ Q_MAIN_WINDOW_STYLE = """
             }
             QLineEdit {
                 background-color: #E8F7EE;
-                color: #E8F7EE;
+                color: #3C362A;
             }
             QComboBox {
                 background-color: #E8F7EE;

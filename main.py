@@ -119,13 +119,12 @@ class SimulatorApp(QMainWindow):
         self.selectSim_label.setText(f"<h3>{self.get_text('SELECT_SIM')}:</h3>")
         self.selectLanguage_label.setText(f"<h3>{self.get_text('SELECT_LANGUAGE')}:</h3>")
         self.Stack.currentWidget().update_label()
-        match app.app_widgets.LANGUAGE:
-            case "ch":
-                self.setStyleSheet(Q_MAIN_WINDOW_STYLE_CH)
-                self.player.play()
-            case _:
-                self.setStyleSheet(Q_MAIN_WINDOW_STYLE)
-                self.player.pause()
+        if app.app_widgets.LANGUAGE == 'ch':
+            self.setStyleSheet(Q_MAIN_WINDOW_STYLE_CH)
+            self.player.play()
+        else:
+            self.setStyleSheet(Q_MAIN_WINDOW_STYLE)
+            self.player.pause()
 
     def __save_info_to_file(self):
         if self.ui_list[self.c_box.currentIndex()].check_fields():
@@ -148,8 +147,7 @@ class SimulatorApp(QMainWindow):
         options = QFileDialog.Options()
         d = QFileDialog.getOpenFileUrl(self, self.get_text("CHOOSE_FILE"), options=options)[0]
         if d != "":
-            directory = Path(d.url().split("file:///")[1])
-
+            directory = Path(d.url()[7:])
             if directory.suffix != ".json":
                 GnWarning(app.app_widgets.LANGUAGE, "FILE_SUFFIX")
             else:
