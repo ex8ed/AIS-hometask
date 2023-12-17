@@ -6,7 +6,6 @@ from PySide6.QtWidgets import (QLabel,
                                QComboBox,
                                QLineEdit,
                                QWidget,
-                               QMessageBox,
                                QGridLayout)
 
 from config.style_settings import (DEC_9_WIDGET_COMBO_BOX_WIDTH,
@@ -131,65 +130,57 @@ class Uocns(GnSystem):
         count_packet_rx_warm_up = self.count_packet_rx_warm_up.text()
 
         if not fifo_size.isdigit():
-            GnCritical("Ошибка!", 'Необходимо числовое значение в поле "FIFO size"')
+            GnCritical("FIFO_DIGIT")
             return False
         elif int(fifo_size) < 1 or int(fifo_size) > 128:
-            GnCritical("Ошибка!",
-                       'Поле "FIFO size" должно принимать значение от 1 до 128')
+            GnCritical("FIFO_SIZE")
             return False
 
         if not fifo_count.isdigit():
-            GnCritical("Ошибка!", 'Необходимо числовое значение в поле "FIFO count"')
+            GnCritical("FIFO_COUNT_DIGIT")
             return False
         elif int(fifo_count) < 1 or int(fifo_count) > 10:
-            GnCritical("Ошибка!",
-                       'Поле "FIFO count" должно принимать значение от 1 до 10')
+            GnCritical("FIFO_COUNT_SIZE")
             return False
 
         if not flit_size.isdigit():
-            GnCritical("Ошибка!", 'Необходимо числовое значение в поле "Flit size"')
+            GnCritical("FLIT_SIZE_DIGIT")
             return False
         elif int(flit_size) < 1 or int(flit_size) > 128:
-            GnCritical("Ошибка!",
-                       'Поле "Flit size" должно принимать значение от 1 до 128')
+            GnCritical("FLIT_SIZE_SIZE")
             return False
 
         for arg in topology_args:
             if not arg.isdigit():
-                GnCritical("Ошибка!",
-                           'Необходимы числовые значения в поле Topology args!\
-                           \nПомните, они должны быть корректными по документации')
+                GnCritical("TOPOLOGY")
                 return False
 
         if not count_run.isdigit():
-            GnCritical("Ошибка!", 'Необходимо числовое значение в поле "Count run"')
+            GnCritical("COUNT_RUN_DIGIT")
             return False
         elif int(count_run) != 1:
-            GnCritical("Ошибка!", 'Значение в поле "Count run" должно принимать значение 1')
+            GnCritical("COUNT_RUN")
             return False
 
         if not count_packet_rx.isdigit():
-            GnCritical("Ошибка!", 'Необходимо числовое значение в поле "Count packet rx"')
+            GnCritical("COUNT_PRX_DIGIT")
             return False
         elif int(count_packet_rx) < 100 or int(count_packet_rx) > 10000:
-            GnCritical("Ошибка!",
-                       'Поле "Count packet rx" должно принимать значение от 100 до 10000')
+            GnCritical("COUNT_PRX_SIZE")
             return False
 
         if not packet_size_avg.isdigit():
-            GnCritical("Ошибка!", 'Необходимо числовое значение в поле "Packet size avg"')
+            GnCritical("PACKET_SIZE_DIGIT")
             return False
         elif int(packet_size_avg) < 1 or int(packet_size_avg) > 100:
-            GnCritical("Ошибка!",
-                       'Поле "Packet size avg" должно принимать значение от 1 до 100')
+            GnCritical("PACKET_SIZE")
             return False
 
         if not count_packet_rx_warm_up.isdigit():
-            GnCritical("Ошибка!", 'Необходимо числовое значение в поле "Count packet rx warm up"')
+            GnCritical("COUNT_PACKET_RX_DIGIT")
             return False
         elif int(count_packet_rx_warm_up) < 0 or int(count_packet_rx_warm_up) > 1000:
-            GnCritical("Ошибка!",
-                       'Поле "Count packet rx warm up" должно принимать значение от 0 до 1000')
+            GnCritical("COUNT_PACKET_RX_SIZE")
             return False
         return True
 
@@ -322,64 +313,50 @@ class Booksim(GnSystem):
         max_samples = self.max_samples.text()
 
         if not virtual_channels_number.isdigit():
-            GnCritical("Ошибка!",
-                       'Необходимо числовое значение в поле "Virtual channels number"')
+            GnCritical("VCN_DIGIT")
             return False
         elif int(virtual_channels_number) < 1 or int(virtual_channels_number) > 10:
-            GnCritical("Ошибка!",
-                       'Поле "Virtual channels number" должно принимать значение от 1 до 10')
+            GnCritical("VCN_SIZE")
             return False
 
         if not sample_period.isdigit():
-            GnCritical("Ошибка!",
-                       'Необходимо числовое значение в поле "Sample period, cycles"')
+            GnCritical("SPC_DIGIT")
             return False
         elif int(sample_period) < 5000 or int(sample_period) > 100000:
-            GnCritical("Ошибка!",
-                       'Поле "Sample period, cycles" должно принимать значение от 5000 до 100000')
+            GnCritical("SPC_SIZE")
             return False
 
         for arg in topology_args:
             if not arg.isdigit():
-                GnCritical("Ошибка!",
-                           'Необходимы числовые значения в поле Topology args\
-                           \nПомните, они должны быть корректными по документации')
+                GnCritical("TOPOLOGY")
                 return False
 
         if not virtual_channels_buffer.isdigit():
-            GnCritical("Ошибка!",
-                       'Необходимо числовое значение в поле "Virtual channels buffer size"')
+            GnCritical("VCNBF_DIGIT")
             return False
         elif int(virtual_channels_buffer) < 1 or int(virtual_channels_buffer) > 128:
-            GnCritical("Ошибка!",
-                       'Поле "Virtual channels buffer size" должно принимать значение от 1 до 128')
+            GnCritical("VCNBF_SIZE")
             return False
 
         if not packet_size.isdigit():
-            GnCritical("Ошибка!",
-                       'Необходимо числовое значение в поле "Packet size, flits"')
+            GnCritical("PACKETF_DIGIT")
             return False
         elif int(packet_size) < 1 or int(packet_size) > 100:
-            GnCritical("Ошибка!",
-                       'Поле "Packet size, flits" должно принимать значение от 1 до 100')
+            GnCritical("PACKETF_SIZE")
             return False
 
         if not warm_up_periods.isdigit():
-            GnCritical("Ошибка!",
-                       'Необходимо числовое значение в поле "Warm up periods, cycles"')
+            GnCritical("WARMUP_DIGIT")
             return False
         elif int(warm_up_periods) < 0 or int(warm_up_periods) > 10:
-            GnCritical("Ошибка!",
-                       'Поле "Warm up periods, cycles" должно принимать значение от 0 до 10')
+            GnCritical("WARMUP_SIZE")
             return False
 
         if not max_samples.isdigit():
-            GnCritical("Ошибка!",
-                       'Необходимо числовое значение в поле "Max samples, cycles"')
+            GnCritical("MAX_SAMPLES_DIGIT")
             return False
         elif int(max_samples) < 1 or int(max_samples) > 10:
-            GnCritical("Ошибка!",
-                       'Поле "Max samples, cycles" должно принимать значение от 1 до 10')
+            GnCritical("MAX_SAMPLES_SIZE")
             return False
         return True
 
@@ -509,73 +486,57 @@ class Newxim(GnSystem):
         max_packet_size = self.max_packet_size.text()
 
         if not topology_channels.isdigit():
-            GnCritical("Ошибка!",
-                       'Необходимо числовое значение в поле "Topology channels"')
+            GnCritical("TOPOLOGY_CHANELS")
             return False
         elif int(topology_channels) != 1:
-            GnCritical("Ошибка!",
-                       'Значение в поле "Topology channels" должно принимать значение 1')
+            GnCritical("TOPOLOGY_CHANELS_1")
             return False
 
         if not simulation_time.isdigit():
-            GnCritical("Ошибка!",
-                       'Необходимо числовое значение в поле "Simulation time"')
+            GnCritical("SIMULATION_TYPE_DIGIT")
             return False
         elif int(simulation_time) < 5000 or int(simulation_time) > 100000:
-            GnCritical("Ошибка!",
-                       'Значение в поле "Simulation time" должно принимать значение от 5000 до 100000')
+            GnCritical("SIMULATION_TYPE_SIZE")
             return False
 
         for arg in topology_args:
             if not arg.isdigit():
-                GnCritical("Ошибка!",
-                           'Необходимы числовые значения в поле Topology args\
-                           \nПомните, они должны быть корректными по документации')
+                GnCritical("TOPOLOGY")
                 return False
 
         if not virtual_channels.isdigit():
-            GnCritical("Ошибка!",
-                       'Необходимо числовое значение в поле "Virtual channels"')
+            GnCritical("VCN_DIGIT")
             return False
         elif int(virtual_channels) < 1 or int(virtual_channels) > 10:
-            GnCritical("Ошибка!",
-                       'Значение в поле "Virtual channels" должно принимать значение от 1 до 10')
+            GnCritical("VCN_SIZE")
             return False
 
         if not min_packet_size.isdigit():
-            GnCritical("Ошибка!",
-                       'Необходимо числовое значение в поле "Min packet size, flits"')
+            GnCritical("MIN_PACKET_DIGIT")
             return False
         elif int(min_packet_size) < 1 or int(min_packet_size) > 100:
-            GnCritical("Ошибка!",
-                       'Значение в поле "Min packet size, flits" должно принимать значение от 1 до 100')
+            GnCritical("MIN_PACKET_SIZE")
             return False
 
         if not warm_up_time.isdigit():
-            GnCritical("Ошибка!",
-                       'Необходимо числовое значение в поле "Warm up time, cycles"')
+            GnCritical("WARMUP_CYCLES_DIGIT")
             return False
         elif int(warm_up_time) < 0 or int(warm_up_time) > 10:
-            GnCritical("Ошибка!",
-                       'Значение в поле "Warm up time, cycles" должно принимать значение от 1 до 10')
+            GnCritical("WARMUP_CYCLES_SIZE")
             return False
 
         if not buffer_depth.isdigit():
-            GnCritical("Ошибка!",
-                       'Необходимо числовое значение в поле "Buffer depth, flits"')
+            GnCritical("BUFFER_DEPTH_DIGIT")
             return False
         elif int(buffer_depth) < 1 or int(buffer_depth) > 128:
-            GnCritical("Ошибка!",
-                       'Значение в поле "Buffer depth, flits" должно принимать значение от 1 до 128')
+            GnCritical("BUFFER_DEPTH_SIZE")
             return False
 
         if not max_packet_size.isdigit():
-            GnCritical("Ошибка!",
-                       'Необходимо числовое значение в поле "Max packet size, flits"')
+            GnCritical("MAX_PACKET_DIGIT")
             return False
         elif int(max_packet_size) < 1 or int(max_packet_size) > 100:
-            GnCritical("Ошибка!",
-                       'Значение в поле "Max packet size, flits" должно принимать значение от 1 до 100')
+            GnCritical("MAX_PACKET_SIZE")
             return False
         return True
 
@@ -692,46 +653,36 @@ class Topaz(GnSystem):
         model_name = self.model_name.text()  # must be a str
 
         if not message_length.isdigit():
-            GnCritical("Ошибка!",
-                       'Необходимо числовое значение в поле "Message length, packets"')
+            GnCritical("MESSAGE_LENGTH_DIGIT")
             return False
         elif int(message_length) != 1:
-            GnCritical("Ошибка!",
-                       'Значение в поле "Message length, packets" должно принимать значение 1')
+            GnCritical("MESSAGE_LENGTH_SIZE")
             return False
 
         if not flit_size.isdigit():
-            GnCritical("Ошибка!",
-                       'Необходимо числовое значение в поле "Flit size, bits"')
+            GnCritical("FLIT_SIZE_BITS_DIGIT")
             return False
         elif int(flit_size) < 1 or int(flit_size) > 256:
-            GnCritical("Ошибка!",
-                       'Значение в поле "Flit size, bits" должно принимать значение от 1 до 256')
+            GnCritical("FLIT_SIZE_BITS_SIZE")
             return False
 
         for arg in network_arguments:
             if not arg.isdigit():
-                GnCritical("Ошибка!",
-                           'Необходимы числовые значения в поле "Network arguments"\
-                           \nПомните, они должны быть корректными по документации!')
+                GnCritical("NETWORK_ARG_DIGIT")
                 return False
 
         if not packet_length.isdigit():
-            GnCritical("Ошибка!",
-                       'Необходимо числовое значение в поле "Packet length, flits"')
+            GnCritical("PACKET_FLITS_DIGIT")
             return False
         elif int(packet_length) < 1 or int(packet_length) > 100:
-            GnCritical("Ошибка!",
-                       'Значение в поле "Packet length, flits" должно принимать значение от 1 до 256')
+            GnCritical("PACKET_FLITS_SIZE")
             return False
 
         if not simulation_cycles.isdigit():
-            GnCritical("Ошибка!",
-                       'Необходимо числовое значение в поле "Simulation cycles"')
+            GnCritical("SIMULATION_CYCLES_DIGIT")
             return False
         elif int(simulation_cycles) < 5000 or int(simulation_cycles) > 100000:
-            GnCritical("Ошибка!",
-                       'Значение в поле "Simulation cycles" должно принимать значение от 1 до 256')
+            GnCritical("SIMULATION_CYCLES_SIZE")
             return False
         return True
 
@@ -803,27 +754,21 @@ class Dec9(GnSystem):
 
         for arg in topology_args:
             if not arg.isdigit():
-                GnCritical("Ошибка!",
-                           'Необходимы числовые значения в поле Topology args\
-                           \nПомните, они должны быть корректными по документации')
+                GnCritical("TOPOLOGY")
                 return False
 
         if not cycle_count.isdigit():
-            GnCritical("Ошибка!",
-                       'Необходимо числовое значение в поле "Cycle count"')
+            GnCritical("CYCLE_COUNT_DIGIT")
             return False
         elif int(cycle_count) < 500 or int(cycle_count) > 100000:
-            GnCritical("Ошибка!",
-                       'Значение в поле "Cycle count" должно принимать значение от 500 до 100000')
+            GnCritical("CYCLE_COUNT_SIZE")
             return False
 
         if not message_length.isdigit():
-            GnCritical("Ошибка!",
-                       'Необходимо числовое значение в поле "Message length"')
+            GnCritical("MESSAGE_LENGTH_B_DIGIT")
             return False
         elif int(message_length) < 1 or int(message_length) > 100:
-            GnCritical("Ошибка!",
-                       'Значение в поле "Message length" должно принимать значение от 1 до 100')
+            GnCritical("MESSAGE_LENGTH_B_SIZE")
             return False
         return True
 
@@ -920,78 +865,56 @@ class GpNocSim(GnSystem):
         traffic_type = self.traffic_type.currentIndex()
 
         if not avg_message_len.isdigit():
-            GnCritical("Ошибка!",
-                       'Необходимо числовое значение в поле "Average message length"')
+            GnCritical("AVG_MESSAGE_DIGIT")
             return False
         elif int(avg_message_len) < -2147483648 or int(avg_message_len) > 2147483647:
-            GnCritical("Ошибка!",
-                       'Значение в поле "Average message length" должно принимать значение от -2147483648 до '
-                       '2147483647')
+            GnCritical("AVG_MESSAGE_SIZE")
             return False
 
         if not flit_length.isdigit():
-            GnCritical("Ошибка!",
-                       'Необходимо числовое значение в поле "Flit length"')
+            GnCritical("FLIT_LENGTH_DIGIT")
             return False
         elif int(flit_length) < -2147483648 or int(flit_length) > 2147483647:
-            GnCritical("Ошибка!",
-                       'Значение в поле "Flit length" должно принимать значение от -2147483648 до '
-                       '2147483647')
+            GnCritical("FLIT_LENGTH_SIZE")
             return False
 
         if not number_of_nodes.isdigit():
-            GnCritical("Ошибка!",
-                       'Необходимо числовое значение в поле "Number of nodes"')
+            GnCritical("NUMBER_NODES_DIGIT")
             return False
         elif int(number_of_nodes) < -2147483648 or int(number_of_nodes) > 2147483647:
-            GnCritical("Ошибка!",
-                       'Значение в поле "Number of nodes" должно принимать значение от -2147483648 до '
-                       '2147483647')
+            GnCritical("NUMBER_NODES_SIZE")
             return False
 
         if not virtual_channels_count.isdigit():
-            GnCritical("Ошибка!",
-                       'Необходимо числовое значение в поле "Virtual channels count"')
+            GnCritical("VCNC_DIGIT")
             return False
         elif int(virtual_channels_count) < -2147483648 or int(virtual_channels_count) > 2147483647:
-            GnCritical("Ошибка!",
-                       'Значение в поле "Virtual channels count" должно принимать значение от -2147483648 до '
-                       '2147483647')
+            GnCritical("VCNC_SIZE")
             return False
 
         if not number_of_flits.isdigit():
-            GnCritical("Ошибка!",
-                       'Необходимо числовое значение в поле "Number of flits"')
+            GnCritical("NUMBER_FLITS_DIGIT")
             return False
         elif int(number_of_flits) < -2147483648 or int(number_of_flits) > 2147483647:
-            GnCritical("Ошибка!",
-                       'Значение в поле "Number of flits" должно принимать значение от -2147483648 до '
-                       '2147483647')
+            GnCritical("NUMBER_FLITS_SIZE")
             return False
 
         if not number_of_cycles.isdigit():
-            GnCritical("Ошибка!",
-                       'Необходимо числовое значение в поле "Number of cycles"')
+            GnCritical("NUMBER_CYCLES_DIGIT")
             return False
         elif int(number_of_cycles) < -2147483648 or int(number_of_cycles) > 2147483647:
-            GnCritical("Ошибка!",
-                       'Значение в поле "Number of cycles" должно принимать значение от -2147483648 до '
-                       '2147483647')
+            GnCritical("NUMBER_CYCLES_SIZE")
             return False
 
         if not number_of_runs.isdigit():
-            GnCritical("Ошибка!",
-                       'Необходимо числовое значение в поле "Number of runs"')
+            GnCritical("NUMBER_RUNS_DIGIT")
             return False
         elif int(number_of_runs) < -2147483648 or int(number_of_runs) > 2147483647:
-            GnCritical("Ошибка!",
-                       'Значение в поле "Number of runs" должно принимать значение от -2147483648 до '
-                       '2147483647')
+            GnCritical("NUMBER_RUNS_SIZE")
             return False
 
         if not isfloat(warm_up_cycle):
-            GnCritical("Ошибка!",
-                       'Необходимо числовое значение в поле "Warm Up Cycle"')
+            GnCritical("WARMUP_CYCLES_DIGIT")
             return False
         return True
 
