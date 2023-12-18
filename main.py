@@ -147,7 +147,7 @@ class SimulatorApp(QMainWindow):
         options = QFileDialog.Options()
         d = QFileDialog.getOpenFileUrl(self, self.get_text("CHOOSE_FILE"), options=options)[0]
         if d != "":
-            directory = Path(d.url()[7:])
+            directory = Path(d.url()[8:])
             if directory.suffix != ".json":
                 GnWarning(app.app_widgets.LANGUAGE, "FILE_SUFFIX")
             else:
